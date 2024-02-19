@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing:border-box;
+    scroll-behavior: smooth;
+
+}
+body{
+    /*background: url(images/galaxy.gif);*/
+}
+h2{
+    font-size:28px;
+    font-weight:800;
+    text-transform: uppercase;
+
+}
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+main{
+    margin-top:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-container{
+    background-color: rgba(34, 34, 34, 0.25);
+    width: 75%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.flex-item-description{
+    border: 1px solid black;
+    margin-left: 50px;
+    width:70%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    max-height: 250px;
+    height:auto
+
+}
+

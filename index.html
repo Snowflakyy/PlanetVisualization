@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Solar System: Document Object Model:30 Days Of JavaScript</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body >
+	<header>
+        <div>
+		<h1>Calculate a weight of an object on a planet</h1>
+    </div>
+    <div>
+		<input type="text" id="mass" placeholder="Mass in Kilogram" />
+		<select id="planet-selection">
+			<option value='none'>--select planet-- </option>
+            <option value='earth'>Earth </option>
+            <option value='venus'>Venus </option>
+
+		</select>
+		<button >Calculate weight</button>
+    </div>
+	</header>
+	<main>
+		<div class="flex-container">
+			<div class="flex-item-image">
+				<img src='./images/earth.png' class="planet-image" />
+			</div>
+			<div class="flex-item-description"></div>
+		</div>
+
+
+
+	</main>
+
+
+
+
+
+	<script>
+    document.addEventListener("DOMContentLoaded", ()=> {     
+        const weight = document.getElementById('mass');
+      const button = document.querySelector('button')
+      weight.value=NaN
+const planetN = new Map();
+planetN.set("mercury", 3.59);
+planetN.set('venus', 8.87);
+planetN.set('earth', 9.81);
+planetN.set("mars", 3.77);
+planetN.set('jupiter', 25.95);
+planetN.set('saturn', 11.08);
+planetN.set("uranus", 10.67);
+planetN.set('neptune', 14.07);
+planetN.set('pluto', 0.42);
+
+button.addEventListener('click',()=> {
+
+  let planetImg = document.querySelector('.planet-image');
+  let weightDiv = document.querySelector('.flex-item-description');
+  let imageDiv = document.querySelector('.flex-item-image');
+  const planetName = document.getElementById('planet-selection').value;
+  
+  let title
+  if( title = document.querySelector('#planet-id')){
+    title.textContent=''
+  }
+  else{
+    title=document.createElement('h1')
+    title.id='planet-id'
+  }
+  weightDiv.append(title)
+  if(planetName == 'none'){
+  if (isNaN(weight.value)) {
+    planetImg.style.visibility = "hidden";
+    imageDiv.style.display = "none";
+    title.textContent = 'Mass is required';
+
+    
+  } else {
+    planetImg.style.visibility = "hidden";
+    imageDiv.style.display = "none";
+    title.textContent = 'Choose a planet';
+    
+    
+  }
+}
+else{
+  if(isNaN(weight.value)) {
+    planetImg.style.visibility = "hidden";
+    imageDiv.style.display = "none";
+    title.textContent = 'Mass is required';
+  }
+  else{
+  planetImg.style.visibility = "visible";
+    planetImg.src = `./images/${planetName}.png`; 
+    imageDiv.style.display = "flex";
+    title.textContent = `The weight on ${planetName} is \n 
+    ${calcWeight(weight.value)}`;
+   
+  }
+}
+
+  
+});
+const calcWeight = (weight) =>{
+    const planetName = document.getElementById('planet-selection').value;
+    let result = Math.round(planetN.get(planetName)*weight/10)*10+'.00N'
+    return result
+}
+});
+       
+
+
+
+    </script>
+</body>
+
+</html>
